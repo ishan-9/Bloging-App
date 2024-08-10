@@ -3,12 +3,38 @@
 
 <head>
     <%- include('./partials/head.ejs') %>
-        <title>Home</title>
+    <title>Home</title>
+    <style>
+        .card {
+            margin-bottom: 20px; 
+        }
+        .card-img-top {
+            height: 180px; 
+            object-fit: cover; 
+        }
+    </style>
 </head>
 
 <body>
     <%- include('./partials/nav.ejs') %>
-        <%- include('./partials/scripts.ejs') %>
+
+    <div class="container mt-3">
+        <div class="row">
+            <% blogs.forEach(blog => { %>
+                <div class="col-md-4 mb-4"> 
+                    <div class="card">
+                        <img src="<%= blog.coverImageURL %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= blog.title %></h5>
+                            <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <%- include('./partials/scripts.ejs') %>
 </body>
 
 </html>
