@@ -1,6 +1,7 @@
 import JWT from 'jsonwebtoken';
-
- const secret = "$uperMan@ish@n";
+import dotenv from 'dotenv';
+dotenv.config();
+const secret = process.env.secret
 
 export function createTokenforUser (user){
     const payload ={
@@ -9,6 +10,7 @@ export function createTokenforUser (user){
         profileImageURL : user.profileImageURL,
         role : user.role
     }
+ 
     const token = JWT.sign(payload,secret);
     return token; 
  }

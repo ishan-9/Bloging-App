@@ -30,7 +30,7 @@
 
         <div class="container mt-4">
 
-            <h1>Comments</h1>
+            <h1>Comments(<%= comments.length %>)</h1>
            
             <% if (locals.user) { %>
 
@@ -45,24 +45,21 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-
+                
+            <% } %>
             <div class="mt-3">
                 <% comments.forEach(comment => { %>
                  <div>
                     <img src="<%= comment.createdBy.profileImageURL %>" width="30vw" />
-                    <%= comment.createdBy.fullName %>
-                    <%= comment.content %>
+                    <%= comment.createdBy.fullName %><br>
+                    <pre><%= comment.content %></pre>
                  </div>
                 <% }) %>
             </div>
-             
-            <% } %>
 
         </div>
 
         <%-include('./partials/scripts.ejs') %>
     
 </body>
-
-
 </html>
